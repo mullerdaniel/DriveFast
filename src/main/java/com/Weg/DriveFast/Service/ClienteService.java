@@ -50,8 +50,8 @@ public class ClienteService {
 
         Cliente cliente = clienteRepository.findById(id).get();
 
-        cliente.setNome(dto.getNome());
-        cliente.setEmail(dto.getEmail());
+        cliente.setNome(dto.nome());
+        cliente.setEmail(dto.email());
 
         return ClienteMapper.toResponseDTO(
                 clienteRepository.save(cliente)

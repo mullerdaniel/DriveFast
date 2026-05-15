@@ -10,22 +10,19 @@ public class ClienteMapper {
 
         Cliente cliente = new Cliente();
 
-        cliente.setNome(dto.getNome());
-        cliente.setCnh(dto.getCnh());
-        cliente.setEmail(dto.getEmail());
+        cliente.setNome(dto.nome());
+        cliente.setCnh(dto.cnh());
+        cliente.setEmail(dto.email());
 
         return cliente;
     }
 
     public static ClienteResponseDTO toResponseDTO(Cliente cliente) {
-
-        ClienteResponseDTO dto = new ClienteResponseDTO();
-
-        dto.setId(cliente.getId());
-        dto.setNome(cliente.getNome());
-        dto.setCnh(cliente.getCnh());
-        dto.setEmail(cliente.getEmail());
-
-        return dto;
+        return new ClienteResponseDTO(
+                cliente.getId(),
+                cliente.getNome(),
+                cliente.getCnh(),
+                cliente.getEmail()
+        );
     }
 }

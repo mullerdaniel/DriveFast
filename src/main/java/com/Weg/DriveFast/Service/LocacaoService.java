@@ -28,13 +28,13 @@ public class LocacaoService {
     }
 
     public LocacaoResponseDTO salvar(LocacaoCreateDTO dto) {
-        Cliente cliente = clienteRepository.findById(dto.getClienteId()).get();
+        Cliente cliente = clienteRepository.findById(dto.clienteId()).get();
 
-        Veiculo veiculo = veiculoRepository.findById(dto.getVeiculoId()).get();
+        Veiculo veiculo = veiculoRepository.findById(dto.veiculoId()).get();
 
-        BigDecimal valorTotal = veiculo.getValorDiaria().multiply(BigDecimal.valueOf(dto.getDias()));
+        BigDecimal valorTotal = veiculo.getValorDiaria().multiply(BigDecimal.valueOf(dto.dias()));
 
-        if(dto.getDias() > 7) {
+        if(dto.dias() > 7) {
             valorTotal = valorTotal.multiply(BigDecimal.valueOf(0.9));
         }
 
@@ -42,7 +42,7 @@ public class LocacaoService {
 
         locacao.setCliente(cliente);
         locacao.setVeiculo(veiculo);
-        locacao.setDias(dto.getDias());
+        locacao.setDias(dto.dias());
         locacao.setValorTotal(valorTotal);
 
         veiculo.setDisponivel(false);

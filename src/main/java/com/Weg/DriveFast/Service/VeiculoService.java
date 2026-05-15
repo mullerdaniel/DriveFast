@@ -49,7 +49,7 @@ public class VeiculoService {
 
         Veiculo veiculo = veiculoRepository.findById(id).get();
 
-        veiculo.setValorDiaria(dto.getValorDiaria());
+        veiculo.setValorDiaria(dto.valorDiaria());
 
         return VeiculoMapper.toResponseDTO(
                 veiculoRepository.save(veiculo)
